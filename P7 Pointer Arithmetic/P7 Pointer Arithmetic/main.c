@@ -7,39 +7,42 @@
 
 #include <stdio.h>
 
-void changeString(int address) {
-    printf("%d", &address);
+void changeString(char *address) {
     int i = 0;
-    /*
-    while (*(string + i) != '\0') {
-        switch (*(string + i)) {
+    while (*(address + i) != '\0') {
+        switch (*(address + i)) {
             case 'a':
-                *(string + i) = '4';
+                *(address + i) = '4';
+                break;
+            case 'e':
+                *(address + i) = '3';
+                break;
+            case 'i':
+                *(address + i) = '1';
                 break;
             case 'o':
-                *(string + i) = '0';
+                *(address + i) = '0';
+                break;
+            case 'u':
+                *(address + i) = '2';
+                break;
             default:
                 break;
         }
+        i++;
     }
-    printf("%s", string);
-    */
+    printf("%s", address);
     printf("\n");
 }
 
 int main(int argc, const char * argv[]) {
     char input[60];
-    char *first;
-    char **pointer;
+    char *ptr;
     
     printf("Give me a string: ");
     fgets(input, sizeof(input), stdin);
-    printf("\nAddress of variable num is: %p\n", &input[0]);
     
-    first = &input[0];
-    printf("%s", first);
-   // int add = &first;
-    
-    //changeString(add);
+    ptr = &input[0];
+    changeString(ptr);
     return 0;
 }
